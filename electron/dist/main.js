@@ -34,11 +34,9 @@ electron_1.ipcMain.on('save-file', function (event, data) {
     console.log(data);
     try {
         fs.writeFileSync(basePath + data['name'], data['content'], 'utf-8');
-        event.webContents.send("fs-result", true);
     }
     catch (e) {
         console.error('Failed to save the file !');
-        event.webContents.send("fs-result", false);
     }
 });
 //# sourceMappingURL=main.js.map
