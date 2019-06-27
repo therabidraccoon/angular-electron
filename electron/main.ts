@@ -2,7 +2,6 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs';
-import { e } from '@angular/core/src/render3';
 
 let win: BrowserWindow;
 
