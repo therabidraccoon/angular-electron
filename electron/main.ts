@@ -1,13 +1,18 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import * as fs from 'fs';
+import { e } from '@angular/core/src/render3';
 
 let win: BrowserWindow;
 
 function createWindow() {
     win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
 
     win.loadURL(
@@ -30,5 +35,16 @@ app.on('ready', createWindow);
 app.on('activate', () => {
     if (win === null) {
         createWindow();
+    }
+});
+
+ipcMain.on('save-file', (event, data) => {
+    let basePath = 'C:/TEMP/';
+    console.log(data);
+    try {
+        fs.writeFileSync(basePath + data['name'], data['content'], 'utf-8');
+    }
+    catch (e) {
+        console.error('Failed to save the file !');
     }
 });
