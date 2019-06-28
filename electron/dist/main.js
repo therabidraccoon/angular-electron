@@ -30,7 +30,7 @@ electron_1.app.on('activate', function () {
     }
 });
 electron_1.ipcMain.on('save-file', function (event, data) {
-    var basePath = 'C:/TEMP/';
+    var basePath = 'C:/TMP_ELECTRON/';
     console.log(data);
     try {
         fs.writeFileSync(basePath + data['name'], data['content'], 'utf-8');

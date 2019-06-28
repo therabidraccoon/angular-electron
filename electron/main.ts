@@ -38,7 +38,7 @@ app.on('activate', () => {
 });
 
 ipcMain.on('save-file', (event, data) => {
-    let basePath = 'C:/TEMP/';
+    let basePath = 'C:/TMP_ELECTRON/';
     console.log(data);
     try {
         fs.writeFileSync(basePath + data['name'], data['content'], 'utf-8');
